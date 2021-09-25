@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/theme/app_theme.dart';
-import 'package:food_delivery/core/utils/utils.dart';
-import 'package:food_delivery/screens/splash/splash_screen.dart';
+
+import 'core/theme/app_theme.dart';
+import 'core/utils/utils.dart';
+import 'screens/product/product_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       builder: (_) => MaterialApp(
         title: 'Flutter Demo',
         theme: AppTheme.light(),
-        home: const SplashScreen(),
+        home: const ProductScreen(),
       ),
     );
   }

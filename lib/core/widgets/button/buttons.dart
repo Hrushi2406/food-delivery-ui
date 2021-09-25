@@ -139,6 +139,7 @@ class Buttons {
     double hPadding = 15,
     double vPadding = 11,
     double borderRadius = 8,
+    Color? textColor,
   }) {
     return PlatformButton(
       isDisabled: isDisabled,
@@ -153,7 +154,7 @@ class Buttons {
           : Text(
               text.toUpperCase(),
               style: Theme.of(context).textTheme.button!.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface,
+                    color: textColor ?? Theme.of(context).colorScheme.onSurface,
                   ),
             ),
     );
