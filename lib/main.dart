@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/screens/cart/cart_screen.dart';
+import 'package:food_delivery/screens/delivery/delivery_screen.dart';
 
 import 'core/theme/app_theme.dart';
 import 'core/utils/utils.dart';
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       builder: (_) => MaterialApp(
         title: 'Flutter Demo',
         theme: AppTheme.light(),
-        home: const ProductScreen(),
+        home: const CartScreen(),
       ),
     );
   }

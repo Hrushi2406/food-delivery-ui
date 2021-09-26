@@ -182,8 +182,10 @@ class Buttons {
     double left = 0,
     double right = 0,
     double borderRadius = 0,
+    Color? backgroundColor,
   }) {
     return PlatformButton(
+      backgroundColor: backgroundColor,
       isDisabled: isDisabled,
       borderRadius: BorderRadius.circular(rf(borderRadius)),
       padding: EdgeInsets.only(

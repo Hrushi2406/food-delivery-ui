@@ -13,7 +13,7 @@ class AppTheme {
   static const Color _primaryColorLight = Color(0xff5b2263);
   static const Color _buttonColor = Color(0xfff6596e);
 
-  static const Color _secondaryColorLight = Color(0xfff5ded3);
+  static const Color _secondaryColorLight = Color(0xffFFDFE8);
 
   static const Color _errorColorLight = Color(0xffb00020);
 
