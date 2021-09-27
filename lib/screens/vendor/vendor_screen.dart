@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/core/widgets/custom_widgets.dart';
 
 import '../../core/utils/utils.dart';
 import '../../widgets/clipped_container.dart';
@@ -45,34 +46,42 @@ class _VendorScreenState extends State<VendorScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              SizedBox(
-                height: rh(380),
-                width: double.infinity,
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  "assets/images/temp_vendor_bg.png",
-                  height: rh(300),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: ClippedContainer(
-                  backgroundColor: Colors.white,
-                  child: VendorInfoCard(
-                    title: "New York Donut.",
-                    rating: 4.2,
-                    sideImagePath: "assets/images/temp_vendor_logo.png",
+          // const CustomAppBar(),
+          Expanded(
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  height: rh(330),
+                  // right: 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Image.asset(
+                      "assets/images/temp_vendor_bg.png",
+                      height: rh(300),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                const Positioned(
+                  child: CustomAppBar(),
+                ),
+                const Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: ClippedContainer(
+                    backgroundColor: Colors.white,
+                    child: VendorInfoCard(
+                      title: "New York Donut.",
+                      rating: 4.2,
+                      sideImagePath: "assets/images/temp_vendor_logo.png",
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: rh(space5x),

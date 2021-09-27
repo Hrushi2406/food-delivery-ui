@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:food_delivery/core/widgets/custom_widgets.dart';
 
 import '../../constant.dart';
 import '../../core/utils/utils.dart';
@@ -28,8 +29,10 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          const CustomAppBar(),
+
           Container(
-            color: lightPink,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           // cart form item
           const CartItemsWidget(),
@@ -52,16 +55,15 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   SizedBox(
-                    width: rw(20),
+                    width: rw(space2x),
                   ),
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Buttons.expanded(
-                        context: context,
-                        text: "CHECKOUT",
-                        hPadding: space2x,
-                        vPadding: space2x,
-                        onPressed: () {}),
+                  Expanded(
+                    child: Buttons.flexible(
+                      context: context,
+                      text: "CHECKOUT",
+                      vPadding: space2x,
+                      onPressed: () {},
+                    ),
                   )
                 ],
               )),

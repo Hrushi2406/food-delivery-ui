@@ -65,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomAppBar(),
+            const CustomAppBar(
+              hasBackButton: false,
+            ),
 
             SizedBox(height: rh(space2x)),
             // greedding

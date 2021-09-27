@@ -172,7 +172,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     borderRadius: 15,
                     context: context,
                     text: "ADD TO CART",
-                    onPressed: () {},
+                    onPressed: _navigate,
                   ),
                 )
               ],

@@ -13,7 +13,9 @@ class CartItemsWidget extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
     return ClipRRect(
       borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+        bottomLeft: Radius.circular(40),
+        bottomRight: Radius.circular(40),
+      ),
       child: Container(
         padding: EdgeInsets.only(top: rh(60), left: space2x, right: space2x),
         width: double.infinity,
@@ -52,7 +54,7 @@ class CartItemsWidget extends StatelessWidget {
                   text: TextSpan(
                     text: 'FROM    ',
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          fontSize: rf(16),
+                          fontSize: rf(14),
                           color: Colors.white,
                           fontWeight: FontWeight.w300,
                         ),
@@ -61,15 +63,13 @@ class CartItemsWidget extends StatelessWidget {
                           text: 'New York Donut.',
                           style:
                               Theme.of(context).textTheme.headline6!.copyWith(
-                                    fontSize: rf(20),
+                                    fontSize: rf(18),
                                     color: Colors.white,
                                   )),
                     ],
                   ),
                 ),
-                SizedBox(
-                  width: rw(20),
-                ),
+                const Spacer(),
                 Container(
                   padding: const EdgeInsets.all(space1x),
                   decoration: BoxDecoration(

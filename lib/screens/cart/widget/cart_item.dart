@@ -27,8 +27,8 @@ class CardItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: Image.asset(
               imagePath,
-              width: rw(80),
-              height: rh(80),
+              width: rw(75),
+              height: rh(75),
               fit: BoxFit.cover,
             ),
           ),
@@ -37,7 +37,8 @@ class CardItem extends StatelessWidget {
           ),
           Text(
             "x$quantity",
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+            style: Theme.of(context).textTheme.headline5!.copyWith(
+                  fontSize: rf(14),
                   color: Theme.of(context).colorScheme.secondary,
                 ),
           ),
@@ -49,7 +50,8 @@ class CardItem extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      fontSize: rf(14),
                       fontWeight: FontWeight.normal,
                       color: Colors.white,
                     ),
@@ -59,7 +61,8 @@ class CardItem extends StatelessWidget {
               ),
               Text(
                 "\$$price",
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: Theme.of(context).textTheme.headline6!.copyWith(
+                      fontSize: rf(16),
                       color: Theme.of(context).colorScheme.secondary,
                     ),
               ),

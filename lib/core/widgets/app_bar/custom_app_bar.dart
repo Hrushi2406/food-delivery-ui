@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/core/utils/utils.dart';
 
 import '../../utils/ui_helper.dart';
 import '../custom_widgets.dart';
@@ -40,7 +41,8 @@ class CustomAppBar extends StatelessWidget {
       tag: isHeroAnimated ? 'app_bar' : 'no_hero_animation',
       child: Container(
         width: double.infinity,
-        color: Theme.of(context).scaffoldBackgroundColor,
+        // color: Theme.of(context).scaffoldBackgroundColor,
+        color: Colors.transparent,
         height: Scaffold.of(context).appBarMaxHeight,
         padding: EdgeInsets.only(
           top: rh(50),
@@ -55,9 +57,23 @@ class CustomAppBar extends StatelessWidget {
               children: <Widget>[
                 //Back Button
                 if (hasBackButton)
-                  const Align(
+                  Align(
                     alignment: Alignment.centerLeft,
-                    child: PlatformIcon(),
+                    child: GestureDetector(
+                      onTap: () => Navigation.pop(context),
+                      child: Row(
+                        children: [
+                          const PlatformIcon(),
+                          Text(
+                            'Back',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline6!
+                                .copyWith(fontSize: rf(14)),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
 
                 //Main Heading and Title
@@ -111,7 +127,7 @@ class PlatformIcon extends StatelessWidget {
       return Buttons.icon(
         context: context,
         icon: CupertinoIcons.back,
-        right: 12,
+        right: space1x,
         semanticLabel: 'Back',
         onPressed: () {
           Navigator.pop(context);
@@ -121,7 +137,7 @@ class PlatformIcon extends StatelessWidget {
       return Buttons.icon(
         context: context,
         icon: Icons.arrow_back_sharp,
-        right: 12,
+        right: space1x,
         semanticLabel: 'Back',
         onPressed: () {
           Navigator.pop(context);
