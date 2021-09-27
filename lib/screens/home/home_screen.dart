@@ -105,13 +105,17 @@ class _HomeScreenState extends State<HomeScreen> {
             //
             ClippedContainer(
               backgroundColor: Theme.of(context).colorScheme.secondary,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: categoryList.length,
-                itemBuilder: (context, index) {
-                  return categoryList[index];
-                },
+              child: SizedBox(
+                height: rh(120),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(horizontal: space2x),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categoryList.length,
+                  itemBuilder: (context, index) {
+                    return categoryList[index];
+                  },
+                ),
               ),
             ),
             SizedBox(
@@ -129,7 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 indent: rw(20),
               ),
               itemBuilder: (context, index) {
-                return vendorList[index];
+                return GestureDetector(
+                  onTap: _navigate,
+                  child: vendorList[index],
+                );
               },
             ),
           ],

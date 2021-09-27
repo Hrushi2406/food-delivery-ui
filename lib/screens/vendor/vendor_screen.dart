@@ -64,6 +64,7 @@ class _VendorScreenState extends State<VendorScreen> {
                 right: 0,
                 bottom: 0,
                 child: ClippedContainer(
+                  backgroundColor: Colors.white,
                   child: VendorInfoCard(
                     title: "New York Donut.",
                     rating: 4.2,
@@ -74,19 +75,22 @@ class _VendorScreenState extends State<VendorScreen> {
             ],
           ),
           SizedBox(
-            height: rh(20),
+            height: rh(space5x),
           ),
           Expanded(
               child: ListView.separated(
             padding: EdgeInsets.zero,
             itemCount: productList.length,
             separatorBuilder: (context, index) => Divider(
-              height: 1,
+              height: rh(space5x),
               endIndent: rw(20),
               indent: rw(20),
             ),
             itemBuilder: (context, index) {
-              return productList[index];
+              return GestureDetector(
+                onTap: _navigate,
+                child: productList[index],
+              );
             },
           ))
         ],

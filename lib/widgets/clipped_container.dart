@@ -22,9 +22,9 @@ class ClippedContainer extends StatelessWidget {
       begin: const Offset(450, 0),
       duration: const Duration(milliseconds: 850),
       child: Container(
-        height: rh(height),
+        // height: rh(height),
         margin: const EdgeInsets.only(left: space2x),
-        padding: const EdgeInsets.only(left: space2x),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(rf(40)),

@@ -16,14 +16,14 @@ class ProductItem extends StatelessWidget {
   final String detail;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(space2x),
+    return Container(
+      color: Colors.transparent,
+      padding: const EdgeInsets.symmetric(horizontal: space2x),
       child: Row(
         children: [
           Image.asset(
             imagePath,
-            width: rw(60),
-            height: rh(60),
+            width: rw(space4x),
             fit: BoxFit.cover,
           ),
           SizedBox(
@@ -34,10 +34,13 @@ class ProductItem extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontSize: rf(14)),
               ),
               SizedBox(
-                height: rh(10),
+                height: rh(5),
               ),
               SizedBox(
                 width: rw(160),
@@ -45,8 +48,8 @@ class ProductItem extends StatelessWidget {
                   detail,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText1!
-                      .copyWith(color: Colors.grey.shade400, fontSize: rf(12)),
+                      .bodyText2!
+                      .copyWith(color: Colors.grey.shade400, fontSize: rf(10)),
                   maxLines: 2,
                 ),
               )
@@ -54,16 +57,25 @@ class ProductItem extends StatelessWidget {
           ),
           const Spacer(),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "\$9.75",
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5!
+                    .copyWith(fontSize: rf(12)),
               ),
+              SizedBox(height: rh(space2x)),
               Buttons.text(
-                  context: context,
-                  textColor: Theme.of(context).primaryColorDark,
-                  text: "Add to cart",
-                  onPressed: () {}),
+                context: context,
+                hPadding: 0,
+                vPadding: 0,
+                textColor: Theme.of(context).primaryColorDark,
+                text: "Add to cart",
+                onPressed: () {},
+              ),
             ],
           )
         ],

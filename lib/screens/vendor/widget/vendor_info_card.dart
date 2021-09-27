@@ -16,97 +16,99 @@ class VendorInfoCard extends StatelessWidget {
   final String sideImagePath;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: space2x, top: space2x),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(rf(40)),
-            bottomLeft: Radius.circular(rf(40)),
-          ),
-          color: Colors.white,
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(0, 2),
-              blurRadius: 10,
-            )
-          ]),
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: space4x,
+        right: space2x,
+        top: space2x * 1.2,
+        bottom: space2x * 1.2,
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                      fontSize: rf(20),
+                    ),
               ),
               SizedBox(
-                height: rh(10),
+                height: rh(space1x * 1.2),
               ),
               Row(
                 children: [
                   CIcons.fromMaterial(
                     icon: Icons.star,
                     semanticLabel: "rating",
+                    size: rf(16),
                     color: const Color(0xFFFFB740),
                   ),
                   SizedBox(
-                    width: rw(8),
+                    width: rw(6),
                   ),
                   Text(
                     "$rating",
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(fontSize: rf(12)),
                   ),
                   Text(
                     " • fast food • \$\$ • 15-20 min",
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: Colors.grey.shade400,
-                          fontSize: 16,
+                          fontSize: rf(12),
                         ),
                   ),
                 ],
               ),
               SizedBox(
-                height: rh(10),
+                height: rh(space2x),
               ),
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(space1x),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: space2x,
+                      vertical: space1x,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFE3DA),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      "Free deliver",
+                      "Free delivery",
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1!
-                          .copyWith(fontSize: rf(14)),
+                          .headline6!
+                          .copyWith(fontSize: rf(12)),
                     ),
                   ),
                   SizedBox(
-                    width: rw(10),
+                    width: rw(space2x),
                   ),
                   Text(
                     "21 reviews",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        color: Colors.grey.shade400, fontSize: rf(14)),
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                          color: Colors.grey.shade400,
+                          fontSize: rf(12),
+                        ),
                   )
                 ],
               )
             ],
           ),
-          SizedBox(
-            width: rw(10),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(rf(15)),
+            child: Image.asset(
+              sideImagePath,
+              width: rw(70),
+            ),
           ),
-          Image.asset(
-            sideImagePath,
-            width: rw(80),
-            height: rh(80),
-          )
         ],
       ),
     );

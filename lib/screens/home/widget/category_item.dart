@@ -9,9 +9,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      // padding: const EdgeInsets.all(space2x),
       padding: const EdgeInsets.symmetric(horizontal: space2x),
-
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

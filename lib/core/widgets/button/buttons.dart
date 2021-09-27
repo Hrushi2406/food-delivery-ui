@@ -155,6 +155,8 @@ class Buttons {
               text.toUpperCase(),
               style: Theme.of(context).textTheme.button!.copyWith(
                     color: textColor ?? Theme.of(context).colorScheme.onSurface,
+                    fontSize: rf(9),
+                    fontWeight: FontWeight.w800,
                   ),
             ),
     );
