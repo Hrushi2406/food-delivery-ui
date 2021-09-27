@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/core/animations/animations.dart';
 import 'package:food_delivery/core/animations/fade_animation.dart';
 import 'package:food_delivery/core/widgets/custom_widgets.dart';
+import 'package:food_delivery/screens/cart/cart_screen.dart';
 
 import '../../core/utils/utils.dart';
 import '../../widgets/clipped_container.dart';
@@ -19,13 +21,6 @@ class VendorScreen extends StatefulWidget {
 }
 
 class _VendorScreenState extends State<VendorScreen> {
-  _navigate() {
-    Navigation.push(
-      context,
-      screen: const ProductScreen(),
-    );
-  }
-
   List<Widget> productList = const [
     ProductItem(
       title: "Honey Milk Donut",
@@ -44,34 +39,63 @@ class _VendorScreenState extends State<VendorScreen> {
     ),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   final _duration = const Duration(milliseconds: 750);
+
+  final _pseudoDuration = const Duration(milliseconds: 150);
 
   late double _height;
 
+  _navigate() async {
+    await _animateContainerFromBottomToTop();
+
+    //PUSH TO PRODUCT SCREEN
+    //Wait till the PRODUCT is poped
+    await Navigation.push(
+      context,
+      customPageTransition: PageTransition(
+        duration: _duration,
+        type: PageTransitionType.fadeIn,
+        child: const ProductScreen(),
+      ),
+    );
+
+    await _animateContainerFromTopToBottom();
+  }
+
   _navigateBack() async {
+    await _animateContainerFromBottomToTop();
+
+    Navigation.pop(context);
+  }
+
+  _animateContainerFromBottomToTop() async {
+    //Animate back to default value
     _height = MediaQuery.of(context).padding.top + rh(50);
     setState(() {});
 
+    //Wait till animation is completed
     await Future.delayed(_duration);
+  }
 
-    Navigation.pop(context);
+  _animateContainerFromTopToBottom() async {
+    //Wait for few second
+    await Future.delayed(_pseudoDuration);
+
+    //Animate from top to bottom
+    _height = MediaQuery.of(context).size.height;
+    setState(() {});
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+
+    ///Default Height
     _height = MediaQuery.of(context).padding.top + rh(50);
     setState(() {});
 
-    Timer(const Duration(milliseconds: 150), () {
-      _height = MediaQuery.of(context).size.height;
-      setState(() {});
-    });
+    //Animate the container From Top to Bottom
+    _animateContainerFromTopToBottom();
   }
 
   @override
@@ -99,13 +123,10 @@ class _VendorScreenState extends State<VendorScreen> {
                       height: rh(330),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
-                        child: FadeAnimation(
-                          duration: const Duration(milliseconds: 1000),
-                          child: Image.asset(
-                            "assets/images/temp_vendor_bg.png",
-                            height: rh(300),
-                            fit: BoxFit.cover,
-                          ),
+                        child: Image.asset(
+                          "assets/images/temp_vendor_bg.png",
+                          height: rh(300),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -133,22 +154,31 @@ class _VendorScreenState extends State<VendorScreen> {
               SizedBox(
                 height: rh(space5x),
               ),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                itemCount: productList.length,
-                separatorBuilder: (context, index) => Divider(
-                  height: rh(space5x),
-                  endIndent: rw(20),
-                  indent: rw(20),
+              FadeAnimation(
+                duration: const Duration(milliseconds: 1250),
+                intervalStart: 0.4,
+                child: SlideAnimation(
+                  duration: const Duration(milliseconds: 1250),
+                  intervalStart: 0.4,
+                  begin: const Offset(0, 100),
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    itemCount: productList.length,
+                    separatorBuilder: (context, index) => Divider(
+                      height: rh(space5x),
+                      endIndent: rw(20),
+                      indent: rw(20),
+                    ),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: _navigate,
+                        child: productList[index],
+                      );
+                    },
+                  ),
                 ),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: _navigate,
-                    child: productList[index],
-                  );
-                },
               )
             ],
           ),

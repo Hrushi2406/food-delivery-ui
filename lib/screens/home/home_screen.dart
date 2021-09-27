@@ -24,14 +24,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final Duration _duration = const Duration(milliseconds: 750);
 
+  final _pseudoDuration = const Duration(milliseconds: 150);
+
   _navigate() async {
-    _height = MediaQuery.of(context).padding.top + rh(50);
-    setState(() {});
+    // ///Animated Screen container from bottom to top
+    // _height = MediaQuery.of(context).padding.top + rh(50);
+    // setState(() {});
 
-    await Future.delayed(_duration);
+    // //Wait till animation is finished
+    // await Future.delayed(_duration);
 
-    scheduleMicrotask(() {});
+    await _animateContainerFromBottomToTop();
 
+    //PUSH TO VENDOR SCREEN
+    //Wait till the Vendor is poped
     await Navigation.push(
       context,
       customPageTransition: PageTransition(
@@ -41,7 +47,23 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
 
-    await Future.delayed(const Duration(milliseconds: 150));
+    await _animateContainerFromTopToBottom();
+  }
+
+  _animateContainerFromBottomToTop() async {
+    //Animate back to default value
+    _height = MediaQuery.of(context).padding.top + rh(50);
+    setState(() {});
+
+    //Wait till animation is completed
+    await Future.delayed(_duration);
+  }
+
+  _animateContainerFromTopToBottom() async {
+    //Wait for few second
+    await Future.delayed(_pseudoDuration);
+
+    //Animate from top to bottom
     _height = MediaQuery.of(context).size.height;
     setState(() {});
   }
@@ -50,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
+    //Initial Animation
     _height = MediaQuery.of(context).size.height;
     setState(() {});
   }
@@ -89,10 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
     CategoryItem(),
     CategoryItem(),
   ];
-
-  getMaxHeight() {
-    Scaffold.of(context);
-  }
 
   @override
   Widget build(BuildContext context) {
