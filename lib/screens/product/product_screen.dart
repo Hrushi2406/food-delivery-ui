@@ -31,14 +31,14 @@ class _ProductScreenState extends State<ProductScreen> {
   _navigate() async {
     await _animateContainerFromBottomToTop();
 
-    //PUSH TO PRODUCT SCREEN
-    //Wait till the PRODUCT is poped
+    //PUSH TO CART SCREEN
+    //Wait till the CART is poped
     await Navigation.push(
       context,
       customPageTransition: PageTransition(
         duration: _duration,
         type: PageTransitionType.fadeIn,
-        child: const ProductScreen(),
+        child: const CartScreen(),
       ),
     );
 
@@ -114,10 +114,10 @@ class _ProductScreenState extends State<ProductScreen> {
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: ScaleAnimation(
-                                duration: const Duration(milliseconds: 750),
+                                duration: const Duration(milliseconds: 1000),
                                 intervalStart: 0.2,
                                 begin: 0,
-                                curve: Curves.bounceOut,
+                                curve: Curves.easeOutBack,
                                 child: Image.asset(
                                   "assets/images/temp_donut.png",
                                   width: rw(380),
@@ -228,15 +228,9 @@ class _ProductScreenState extends State<ProductScreen> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  offset: const Offset(0, 4),
-                                  blurRadius: 10,
-                                  color: Colors.black.withOpacity(0.15),
-                                ),
-                              ]),
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
                           child: Buttons.icon(
                             context: context,
                             icon: Icons.favorite_border,

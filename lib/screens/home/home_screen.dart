@@ -27,13 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _pseudoDuration = const Duration(milliseconds: 150);
 
   _navigate() async {
-    // ///Animated Screen container from bottom to top
-    // _height = MediaQuery.of(context).padding.top + rh(50);
-    // setState(() {});
-
-    // //Wait till animation is finished
-    // await Future.delayed(_duration);
-
+    ///Animated Screen container from bottom to top
     await _animateContainerFromBottomToTop();
 
     //PUSH TO VENDOR SCREEN

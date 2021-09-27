@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: AppTheme.light(),
         home: const HomeScreen(),
+        // home: const CartScreen(),
       ),
     );
   }

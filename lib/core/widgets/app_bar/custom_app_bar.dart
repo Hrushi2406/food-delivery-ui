@@ -15,6 +15,7 @@ class CustomAppBar extends StatelessWidget {
     this.isHeroAnimated = true,
     this.actions,
     this.onBackTap,
+    this.showOptions = true,
   });
 
   ///Title of text
@@ -35,6 +36,9 @@ class CustomAppBar extends StatelessWidget {
 
   ///Is Hero animated
   final bool isHeroAnimated;
+
+  ///Show Action Option
+  final bool showOptions;
 
   final VoidCallback? onBackTap;
 
@@ -64,13 +68,19 @@ class CustomAppBar extends StatelessWidget {
                       onTap: onBackTap ?? () => Navigation.pop(context),
                       child: Row(
                         children: [
-                          const PlatformIcon(),
+                          PlatformIcon(
+                            color: showOptions ? Colors.black : Colors.white,
+                          ),
                           Text(
                             'Back',
                             style: Theme.of(context)
                                 .textTheme
                                 .headline6!
-                                .copyWith(fontSize: rf(14)),
+                                .copyWith(
+                                  fontSize: rf(14),
+                                  color:
+                                      showOptions ? Colors.black : Colors.white,
+                                ),
                           ),
                         ],
                       ),
@@ -91,24 +101,24 @@ class CustomAppBar extends StatelessWidget {
                 ),
 
                 //Actions
-                // if (actions != null)
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      CIcons.fromMaterial(
-                        icon: Icons.shopping_bag_outlined,
-                        semanticLabel: 'Bag',
-                      ),
-                      SizedBox(width: rw(space3x)),
-                      CIcons.fromMaterial(
-                        icon: Icons.favorite_outline,
-                        semanticLabel: 'Heart',
-                      ),
-                    ],
+                if (showOptions)
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        CIcons.fromMaterial(
+                          icon: Icons.shopping_bag_outlined,
+                          semanticLabel: 'Bag',
+                        ),
+                        SizedBox(width: rw(space3x)),
+                        CIcons.fromMaterial(
+                          icon: Icons.favorite_outline,
+                          semanticLabel: 'Heart',
+                        ),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
             //Back Button
@@ -120,7 +130,9 @@ class CustomAppBar extends StatelessWidget {
 }
 
 class PlatformIcon extends StatelessWidget {
-  const PlatformIcon({Key? key}) : super(key: key);
+  const PlatformIcon({Key? key, this.color}) : super(key: key);
+
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -129,6 +141,7 @@ class PlatformIcon extends StatelessWidget {
         context: context,
         icon: CupertinoIcons.back,
         right: space1x,
+        iconColor: color,
         semanticLabel: 'Back',
         onPressed: () {
           Navigator.pop(context);
@@ -139,6 +152,7 @@ class PlatformIcon extends StatelessWidget {
         context: context,
         icon: Icons.arrow_back_sharp,
         right: space1x,
+        iconColor: color,
         semanticLabel: 'Back',
         onPressed: () {
           Navigator.pop(context);

@@ -1,4 +1,6 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:food_delivery/core/animations/animations.dart';
+import 'package:food_delivery/core/utils/size_config.dart';
 
 import '../../../core/utils/ui_helper.dart';
 import '../../../core/widgets/icon/custom_icons.dart';
@@ -10,103 +12,99 @@ class CartItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        bottomLeft: Radius.circular(40),
-        bottomRight: Radius.circular(40),
-      ),
-      child: Container(
-        padding: EdgeInsets.only(top: rh(60), left: space2x, right: space2x),
-        width: double.infinity,
-        height: deviceSize.height - 120,
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Cart",
-              style: Theme.of(context).textTheme.headline2!.copyWith(
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white,
-                  ),
-            ),
-            SizedBox(
-              height: rh(10),
-            ),
-            Text(
-              "DELIVER TO 779 CASSIE",
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    fontSize: rf(12),
-                    height: 1.5,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w300,
-                  ),
-            ),
-            SizedBox(
-              height: rh(20),
-            ),
-            Row(
-              children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'FROM    ',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          fontSize: rf(14),
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300,
-                        ),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'New York Donut.',
-                          style:
-                              Theme.of(context).textTheme.headline6!.copyWith(
-                                    fontSize: rf(18),
-                                    color: Colors.white,
-                                  )),
-                    ],
-                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: space2x),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Cart",
+            style: Theme.of(context).textTheme.headline2!.copyWith(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
                 ),
-                const Spacer(),
-                Container(
-                  padding: const EdgeInsets.all(space1x),
-                  decoration: BoxDecoration(
-                    border: Border.all(
+          ),
+          SizedBox(
+            height: rh(10),
+          ),
+          Text(
+            "DELIVER TO 779 CASSIE",
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                  fontSize: rf(12),
+                  height: 1.5,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                ),
+          ),
+          SizedBox(
+            height: rh(20),
+          ),
+          Row(
+            children: [
+              RichText(
+                text: TextSpan(
+                  text: 'FROM    ',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: rf(14),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                      ),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'New York Donut.',
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              fontSize: rf(18),
+                              color: Colors.white,
+                            )),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              Container(
+                padding: const EdgeInsets.all(space1x),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                  // color: const Color(0xFFF7F2F7),
+                ),
+                child: Row(
+                  children: [
+                    CIcons.fromMaterial(
+                      icon: Icons.timer,
+                      semanticLabel: "time",
+                      size: 17,
                       color: Theme.of(context).colorScheme.secondary,
                     ),
-                    borderRadius: BorderRadius.circular(10),
-                    // color: const Color(0xFFF7F2F7),
-                  ),
-                  child: Row(
-                    children: [
-                      CIcons.fromMaterial(
-                        icon: Icons.timer,
-                        semanticLabel: "time",
-                        size: 17,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      Text(
-                        " 15-20 min",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      )
-                    ],
-                  ),
+                    Text(
+                      " 15-20 min",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
+                    )
+                  ],
                 ),
-              ],
-            ),
-            SizedBox(
-              height: rh(10),
-            ),
-            // food item
-            Expanded(
+              ),
+            ],
+          ),
+          SizedBox(
+            height: rh(10),
+          ),
+          // food item
+          FadeAnimation(
+            intervalStart: 0.50,
+            duration: const Duration(milliseconds: 1550),
+            child: SlideAnimation(
+              intervalStart: 0.50,
+              duration: const Duration(milliseconds: 1550),
+              begin: const Offset(0, 200),
               child: ListView(
                 physics: const BouncingScrollPhysics(),
+                // physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 children: [
                   const CardItem(
@@ -143,8 +141,8 @@ class CartItemsWidget extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
