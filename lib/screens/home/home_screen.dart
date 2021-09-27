@@ -67,8 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.didChangeDependencies();
 
     //Initial Animation
-    _height = MediaQuery.of(context).size.height;
+
+    _height = MediaQuery.of(context).padding.top + rh(50);
     setState(() {});
+    Timer(const Duration(milliseconds: 200), () {
+      _animateContainerFromTopToBottom();
+    });
   }
 
   List<Widget> vendorList = const [
@@ -111,92 +115,111 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: AnimatedContainer(
-        height: _height,
-        curve: Curves.fastOutSlowIn,
-        duration: _duration,
-        decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomAppBar(
-                hasBackButton: false,
-              ),
+      body: SlideAnimation(
+        duration: const Duration(milliseconds: 250),
+        child: AnimatedContainer(
+          height: _height,
+          curve: Curves.fastOutSlowIn,
+          duration: _duration,
+          decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(rf(40)),
+              topRight: Radius.circular(rf(40)),
+              bottomLeft: Radius.circular(rf(40)),
+              bottomRight: Radius.circular(rf(40)),
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomAppBar(
+                  hasBackButton: false,
+                ),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: space2x),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Hi, ',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          fontSize: rf(24),
-                          fontWeight: FontWeight.normal,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: space2x),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Hi, ',
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: rf(24),
+                            fontWeight: FontWeight.normal,
+                          ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Jack',
+                          style:
+                              Theme.of(context).textTheme.headline6!.copyWith(
+                                    fontSize: rf(24),
+                                  ),
                         ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'Jack',
-                        style: Theme.of(context).textTheme.headline6!.copyWith(
-                              fontSize: rf(24),
-                            ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: space2x),
+                  child: Text(
+                    "DELIVER TO 779 CASSIE",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontSize: rf(12), height: 1.5),
+                  ),
+                ),
+                SizedBox(
+                  height: rh(20),
+                ),
+                //
+                ClippedContainer(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  child: SizedBox(
+                    height: rh(120),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.symmetric(horizontal: space2x),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categoryList.length,
+                      itemBuilder: (context, index) {
+                        return categoryList[index];
+                      },
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: rh(space5x),
+                ),
+                // vendor list
+                FadeAnimation(
+                  duration: const Duration(milliseconds: 1250),
+                  intervalStart: 0.4,
+                  child: SlideAnimation(
+                    begin: const Offset(0, 100),
+                    intervalStart: 0.4,
+                    duration: const Duration(milliseconds: 1250),
+                    child: ListView.separated(
+                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: vendorList.length,
+                      separatorBuilder: (context, index) => Divider(
+                        height: rh(space4x),
+                        endIndent: rw(20),
+                        indent: rw(20),
                       ),
-                    ],
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: _navigate,
+                          child: vendorList[index],
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: space2x),
-                child: Text(
-                  "DELIVER TO 779 CASSIE",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: rf(12), height: 1.5),
-                ),
-              ),
-              SizedBox(
-                height: rh(20),
-              ),
-              //
-              ClippedContainer(
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-                child: SizedBox(
-                  height: rh(120),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(horizontal: space2x),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categoryList.length,
-                    itemBuilder: (context, index) {
-                      return categoryList[index];
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: rh(space5x),
-              ),
-              // vendor list
-              ListView.separated(
-                padding: EdgeInsets.zero,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: vendorList.length,
-                separatorBuilder: (context, index) => Divider(
-                  height: rh(space4x),
-                  endIndent: rw(20),
-                  indent: rw(20),
-                ),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: _navigate,
-                    child: vendorList[index],
-                  );
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
