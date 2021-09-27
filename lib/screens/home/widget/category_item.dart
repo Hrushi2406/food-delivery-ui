@@ -1,11 +1,13 @@
 ﻿import 'package:flutter/material.dart';
 
 import '../../../core/utils/ui_helper.dart';
-import '../../../core/widgets/icon/custom_icons.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({Key? key}) : super(key: key);
-
+  const CategoryItem(
+      {Key? key, required this.icon, required this.backgroundColor})
+      : super(key: key);
+  final Widget icon;
+  final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,12 +17,8 @@ class CategoryItem extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: rf(30),
-            backgroundColor: const Color(0xfff2e3db),
-            child: CIcons.fromMaterial(
-              icon: Icons.ac_unit,
-              semanticLabel: "All",
-              size: rf(18),
-            ),
+            backgroundColor: backgroundColor,
+            child: icon,
           ),
           SizedBox(
             height: rh(space1x),

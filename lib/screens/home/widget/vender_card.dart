@@ -119,13 +119,34 @@ class VendorCard extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          CIcons.fromMaterial(
-            icon: Icons.favorite_border,
-            semanticLabel: "favorate",
-            color: Theme.of(context).primaryColorDark,
-          )
+          const FavoriteIcon()
         ],
       ),
     );
+  }
+}
+
+class FavoriteIcon extends StatefulWidget {
+  const FavoriteIcon({Key? key}) : super(key: key);
+
+  @override
+  _FavoriteIconState createState() => _FavoriteIconState();
+}
+
+class _FavoriteIconState extends State<FavoriteIcon> {
+  bool isFav = false;
+  @override
+  Widget build(BuildContext context) {
+    return isFav
+        ? CIcons.fromMaterial(
+            icon: Icons.favorite,
+            semanticLabel: "favorate",
+            color: Theme.of(context).primaryColorDark,
+          )
+        : CIcons.fromMaterial(
+            icon: Icons.favorite_border,
+            semanticLabel: "favorate",
+            color: Theme.of(context).primaryColorDark,
+          );
   }
 }

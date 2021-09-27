@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/animations/animations.dart';
 import 'package:food_delivery/core/animations/fade_animation.dart';
+import 'package:food_delivery/screens/home/widget/category_list_view.dart';
 
 import '../../core/utils/utils.dart';
 import '../../core/widgets/custom_widgets.dart';
@@ -77,38 +78,33 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> vendorList = const [
     VendorCard(
-        imagePath: "assets/images/temp_donat.jpg",
-        name: "Brindle Room",
+        imagePath: "assets/images/logo/gladis_logo.jpg",
+        name: "Gladis Baker",
         rating: 4.2),
     VendorCard(
-        imagePath: "assets/images/temp_donat.jpg",
-        name: "Brindle Room",
+        imagePath: "assets/images/logo/tasties_logo.jpg",
+        name: "Tasties by tina",
+        rating: 4.5),
+    VendorCard(
+        imagePath: "assets/images/logo/donut2_logo.jpg",
+        name: "New York Donut.",
         rating: 4.2),
     VendorCard(
-        imagePath: "assets/images/temp_donat.jpg",
-        name: "Brindle Room",
-        rating: 4.2),
+        imagePath: "assets/images/logo/sweet-shop-logo.jpg",
+        name: "Sweets Shop.",
+        rating: 4.0),
     VendorCard(
-        imagePath: "assets/images/temp_donat.jpg",
-        name: "Brindle Room",
-        rating: 4.2),
+        imagePath: "assets/images/logo/leliuious_logo.jpg",
+        name: "Leliuious.",
+        rating: 4.3),
     VendorCard(
-        imagePath: "assets/images/temp_donat.jpg",
-        name: "Brindle Room",
+        imagePath: "assets/images/logo/monginis-logo.png",
+        name: "Monginis",
+        rating: 3.8),
+    VendorCard(
+        imagePath: "assets/images/logo/lila_logo.png",
+        name: "Lial Manila Sweets",
         rating: 4.2),
-  ];
-
-  List<Widget> categoryList = const [
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
-    CategoryItem(),
   ];
 
   @override
@@ -175,18 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //
                 ClippedContainer(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
-                  child: SizedBox(
-                    height: rh(120),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.symmetric(horizontal: space2x),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: categoryList.length,
-                      itemBuilder: (context, index) {
-                        return categoryList[index];
-                      },
-                    ),
-                  ),
+                  child: const CategoryListView(),
                 ),
                 SizedBox(
                   height: rh(space5x),
