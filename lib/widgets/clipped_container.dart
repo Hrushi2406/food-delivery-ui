@@ -7,7 +7,7 @@ class ClippedContainer extends StatelessWidget {
     Key? key,
     required this.child,
     this.backgroundColor,
-    this.height = 140,
+    this.height = 120,
   }) : super(key: key);
 
   final Widget child;
@@ -24,6 +24,7 @@ class ClippedContainer extends StatelessWidget {
       child: Container(
         height: rh(height),
         margin: const EdgeInsets.only(left: space2x),
+        padding: const EdgeInsets.only(left: space2x),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(rf(40)),

@@ -9,21 +9,29 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(space2x),
+      // padding: const EdgeInsets.all(space2x),
+      padding: const EdgeInsets.symmetric(horizontal: space2x),
+
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircleAvatar(
-            radius: 34,
-            child:
-                CIcons.fromMaterial(icon: Icons.ac_unit, semanticLabel: "All"),
+            radius: rf(30),
+            backgroundColor: const Color(0xfff2e3db),
+            child: CIcons.fromMaterial(
+              icon: Icons.ac_unit,
+              semanticLabel: "All",
+              size: rf(18),
+            ),
           ),
           SizedBox(
-            height: rh(10),
+            height: rh(space1x),
           ),
           Text(
-            "All",
-            style: Theme.of(context).textTheme.bodyText1,
+            "Dessert ",
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+                  fontSize: rf(12),
+                ),
           )
         ],
       ),

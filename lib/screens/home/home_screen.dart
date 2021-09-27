@@ -61,76 +61,76 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: space2x),
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomAppBar(),
-            SizedBox(height: rh(space4x)),
+
+            SizedBox(height: rh(space2x)),
             // greedding
-            RichText(
-              text: TextSpan(
-                text: 'Hi, ',
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontSize: rf(24),
-                      fontWeight: FontWeight.normal,
-                    ),
-                children: <TextSpan>[
-                  TextSpan(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: space2x),
+              child: RichText(
+                text: TextSpan(
+                  text: 'Hi, ',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        fontSize: rf(24),
+                        fontWeight: FontWeight.normal,
+                      ),
+                  children: <TextSpan>[
+                    TextSpan(
                       text: 'Jack',
                       style: Theme.of(context).textTheme.headline6!.copyWith(
                             fontSize: rf(24),
-                          )),
-                ],
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Text(
-              "DELIVER TO 779 CASSIE",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1!
-                  .copyWith(fontSize: rf(12), height: 1.5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: space2x),
+              child: Text(
+                "DELIVER TO 779 CASSIE",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(fontSize: rf(12), height: 1.5),
+              ),
             ),
             SizedBox(
               height: rh(20),
             ),
             //
             ClippedContainer(
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(rf(40)),
-                  bottomLeft: Radius.circular(rf(40)),
-                ),
-                child: Container(
-                  color: Theme.of(context).colorScheme.secondary,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categoryList.length,
-                    itemBuilder: (context, index) {
-                      return categoryList[index];
-                    },
-                  ),
-                ),
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: categoryList.length,
+                itemBuilder: (context, index) {
+                  return categoryList[index];
+                },
               ),
             ),
             SizedBox(
-              height: rh(space2x),
+              height: rh(space5x),
             ),
             // vendor list
-            Expanded(
-              child: ListView.separated(
-                padding: EdgeInsets.zero,
-                itemCount: vendorList.length,
-                separatorBuilder: (context, index) => Divider(
-                  height: 2,
-                  endIndent: rw(20),
-                  indent: rw(20),
-                ),
-                itemBuilder: (context, index) {
-                  return vendorList[index];
-                },
+            ListView.separated(
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: vendorList.length,
+              separatorBuilder: (context, index) => Divider(
+                height: rh(space4x),
+                endIndent: rw(20),
+                indent: rw(20),
               ),
+              itemBuilder: (context, index) {
+                return vendorList[index];
+              },
             ),
           ],
         ),

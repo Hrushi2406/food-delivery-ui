@@ -17,9 +17,8 @@ class VendorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(space2x),
+      padding: const EdgeInsets.symmetric(horizontal: space2x),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ClipRRect(
@@ -41,31 +40,35 @@ class VendorCard extends StatelessWidget {
                 name,
                 style: Theme.of(context)
                     .textTheme
-                    .headline6!
-                    .copyWith(fontSize: 20),
+                    .headline5!
+                    .copyWith(fontSize: rf(16)),
               ),
               SizedBox(
-                height: rh(10),
+                height: rh(5),
               ),
               Row(
                 children: [
                   CIcons.fromMaterial(
                     icon: Icons.star,
                     semanticLabel: "rating",
+                    size: rf(18),
                     color: const Color(0xFFFFB740),
                   ),
                   SizedBox(
-                    width: rw(8),
+                    width: rw(5),
                   ),
                   Text(
                     "$rating",
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(fontSize: rf(14)),
                   ),
                   Text(
-                    " • fast food • \$\$",
+                    " • Fast food • \$2.5",
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: Colors.grey.shade400,
-                          fontSize: 16,
+                          fontSize: rf(12),
                         ),
                   )
                 ],
@@ -78,14 +81,15 @@ class VendorCard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(space1x),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xFFF7F2F7)),
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xFFF7F2F7),
+                    ),
                     child: Row(
                       children: [
                         CIcons.fromMaterial(
                             icon: Icons.timer,
                             semanticLabel: "time",
-                            size: 17,
+                            size: rf(12),
                             color: const Color(0xFF977F98)),
                         Text(
                           " 15-20 min",
@@ -93,7 +97,7 @@ class VendorCard extends StatelessWidget {
                               .textTheme
                               .bodyText1!
                               .copyWith(
-                                  fontSize: 15,
+                                  fontSize: rf(12),
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xFF977F98)),
                         )
@@ -107,7 +111,7 @@ class VendorCard extends StatelessWidget {
                     "2.4 km",
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: Colors.grey.shade400,
-                          fontSize: 16,
+                          fontSize: rf(12),
                         ),
                   )
                 ],
@@ -116,9 +120,10 @@ class VendorCard extends StatelessWidget {
           ),
           const Spacer(),
           CIcons.fromMaterial(
-              icon: Icons.favorite_border,
-              semanticLabel: "favorate",
-              color: Theme.of(context).primaryColorDark)
+            icon: Icons.favorite_border,
+            semanticLabel: "favorate",
+            color: Theme.of(context).primaryColorDark,
+          )
         ],
       ),
     );

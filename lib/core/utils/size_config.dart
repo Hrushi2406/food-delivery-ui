@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 ///for specific [Orientation]
 
 class SizeConfig {
-  //TODO: Change default parameters as per your device
   //default parameters set as per iPhone X dimensions
   static double _defaultScreenWidth = 375;
   static double _defaultScreenHeight = 812;
