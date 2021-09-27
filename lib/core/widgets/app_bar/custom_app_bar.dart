@@ -14,6 +14,7 @@ class CustomAppBar extends StatelessWidget {
     this.hasBackButton = true,
     this.isHeroAnimated = true,
     this.actions,
+    this.onBackTap,
   });
 
   ///Title of text
@@ -35,15 +36,15 @@ class CustomAppBar extends StatelessWidget {
   ///Is Hero animated
   final bool isHeroAnimated;
 
+  final VoidCallback? onBackTap;
+
   @override
   Widget build(BuildContext context) {
     return Hero(
       tag: isHeroAnimated ? 'app_bar' : 'no_hero_animation',
       child: Container(
         width: double.infinity,
-        // color: Theme.of(context).scaffoldBackgroundColor,
         color: Colors.transparent,
-        height: Scaffold.of(context).appBarMaxHeight,
         padding: EdgeInsets.only(
           top: rh(50),
           left: space2x,
@@ -60,7 +61,7 @@ class CustomAppBar extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: GestureDetector(
-                      onTap: () => Navigation.pop(context),
+                      onTap: onBackTap ?? () => Navigation.pop(context),
                       child: Row(
                         children: [
                           const PlatformIcon(),
