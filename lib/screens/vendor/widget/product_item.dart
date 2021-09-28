@@ -21,10 +21,20 @@ class ProductItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: space2x),
       child: Row(
         children: [
-          Image.asset(
-            imagePath,
-            width: rw(space4x),
-            fit: BoxFit.cover,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(rf(10)),
+            child: Container(
+              width: rh(space4x),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Image.asset(
+                  imagePath,
+                  // width: rw(space4x),
+                  // height: rh(space3x),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ),
           SizedBox(
             width: rw(10),

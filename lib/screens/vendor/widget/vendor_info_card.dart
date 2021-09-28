@@ -18,7 +18,7 @@ class VendorInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: space4x,
+        left: space5x,
         right: space2x,
         top: space2x * 1.2,
         bottom: space2x * 1.2,

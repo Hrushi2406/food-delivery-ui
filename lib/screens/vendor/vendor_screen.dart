@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/core/animations/animations.dart';
 import 'package:food_delivery/core/animations/fade_animation.dart';
 import 'package:food_delivery/core/widgets/custom_widgets.dart';
-import 'package:food_delivery/screens/cart/cart_screen.dart';
 
 import '../../core/utils/utils.dart';
 import '../../widgets/clipped_container.dart';
@@ -25,17 +23,32 @@ class _VendorScreenState extends State<VendorScreen> {
     ProductItem(
       title: "Honey Milk Donut",
       detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/temp_donut.png",
+      imagePath: "assets/images/donut/donut_7.png",
     ),
     ProductItem(
       title: "Honey Milk Donut",
       detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/temp_donut.png",
+      imagePath: "assets/images/donut/donut_2.png",
     ),
     ProductItem(
       title: "Honey Milk Donut",
       detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/temp_donut.png",
+      imagePath: "assets/images/donut/donut_3.png",
+    ),
+    ProductItem(
+      title: "Honey Milk Donut",
+      detail: "blueberry + sugar + flawour + some ingrident ...",
+      imagePath: "assets/images/donut/donut_4.png",
+    ),
+    ProductItem(
+      title: "Honey Milk Donut",
+      detail: "blueberry + sugar + flawour + some ingrident ...",
+      imagePath: "assets/images/donut/donut_5.png",
+    ),
+    ProductItem(
+      title: "Honey Milk Donut",
+      detail: "blueberry + sugar + flawour + some ingrident ...",
+      imagePath: "assets/images/donut/donut_6.png",
     ),
   ];
 
@@ -125,7 +138,9 @@ class _VendorScreenState extends State<VendorScreen> {
                         borderRadius: BorderRadius.circular(30),
                         child: Image.asset(
                           "assets/images/temp_vendor_bg.png",
-                          height: rh(300),
+                          // "assets/images/donut/donut_7.jpg",
+                          width: 100 * SizeConfig.widthMultiplier,
+                          // height: rh(100),
                           fit: BoxFit.cover,
                         ),
                       ),

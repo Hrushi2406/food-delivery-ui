@@ -110,7 +110,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           Positioned.fill(
                             top: 0,
                             bottom: 0,
-                            left: -150,
+                            left: -180,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: ScaleAnimation(
@@ -119,7 +119,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                 begin: 0,
                                 curve: Curves.easeOutBack,
                                 child: Image.asset(
-                                  "assets/images/temp_donut.png",
+                                  "assets/images/donut/donut_4.png",
                                   width: rw(380),
                                   // height: rh(),
                                 ),

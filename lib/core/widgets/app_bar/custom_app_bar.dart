@@ -136,28 +136,38 @@ class PlatformIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return Buttons.icon(
-        context: context,
-        icon: CupertinoIcons.back,
-        right: space1x,
-        iconColor: color,
-        semanticLabel: 'Back',
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      );
-    } else {
-      return Buttons.icon(
-        context: context,
-        icon: Icons.arrow_back_sharp,
-        right: space1x,
-        iconColor: color,
-        semanticLabel: 'Back',
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      );
-    }
+    return Buttons.icon(
+      context: context,
+      icon: CupertinoIcons.back,
+      right: space1x,
+      iconColor: color,
+      semanticLabel: 'Back',
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    // if (Platform.isIOS) {
+    //   return Buttons.icon(
+    //     context: context,
+    //     icon: CupertinoIcons.back,
+    //     right: space1x,
+    //     iconColor: color,
+    //     semanticLabel: 'Back',
+    //     onPressed: () {
+    //       Navigator.pop(context);
+    //     },
+    //   );
+    // } else {
+    //   return Buttons.icon(
+    //     context: context,
+    //     icon: Icons.arrow_back_sharp,
+    //     right: space1x,
+    //     iconColor: color,
+    //     semanticLabel: 'Back',
+    //     onPressed: () {
+    //       Navigator.pop(context);
+    //     },
+    //   );
+    // }
   }
 }
