@@ -17,7 +17,8 @@ class CartScreen extends StatefulWidget {
   _CartScreenState createState() => _CartScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _CartScreenState extends State<CartScreen>
+    with SingleTickerProviderStateMixin {
   final _duration = const Duration(milliseconds: 750);
 
   final _pseudoDuration = const Duration(milliseconds: 150);
@@ -25,6 +26,46 @@ class _CartScreenState extends State<CartScreen> {
   late double _height;
 
   late double _innerHeight;
+
+  late final AnimationController _animationController;
+
+  late final Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 650),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: Offset(100 * SizeConfig.widthMultiplier, 0),
+      // begin: Offset(300, 0),
+      end: const Offset(0, 0),
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  _slideInContainer() async {
+    // await Future.delayed(Duration(milliseconds: 250));
+    _animationController.forward();
+  }
+
+  _slideOutContainer() {
+    _animationController.reverse();
+  }
 
   _navigate() async {
     await _animateContainerFromBottomToTop();
@@ -44,7 +85,9 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   _navigateBack() async {
-    // await _animateInnerContainerFromBottomToTop();
+    await _animateInnerContainerFromBottomToTop();
+
+    _slideOutContainer();
 
     await _animateContainerFromBottomToTop();
 
@@ -79,6 +122,10 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   _animateInnerContainerFromTopToBottom() async {
+    await Future.delayed(
+      const Duration(milliseconds: 200),
+    );
+    _slideInContainer();
     //Wait for few second
     await Future.delayed(
       const Duration(milliseconds: 750),
@@ -102,6 +149,7 @@ class _CartScreenState extends State<CartScreen> {
 
     //Animate the outer container From Top to Bottom
     _animateContainerFromTopToBottom();
+
     //Animate the inner container from top to bottom
     _animateInnerContainerFromTopToBottom();
   }
@@ -120,42 +168,44 @@ class _CartScreenState extends State<CartScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SlideAnimation(
-                begin: Offset(MediaQuery.of(context).size.width, 0),
-                duration: const Duration(milliseconds: 650),
-                intervalStart: 0.3,
-                child: AnimatedContainer(
-                  height: _innerHeight,
-                  curve: Curves.fastOutSlowIn,
-                  duration: _duration,
-                  padding: const EdgeInsets.only(
-                    bottom: space3x,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(rf(40)),
-                      topRight: Radius.circular(rf(40)),
-                      bottomLeft: Radius.circular(rf(40)),
-                      bottomRight: Radius.circular(rf(40)),
-                    ),
-                  ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomAppBar(
-                          isHeroAnimated: false,
-                          showOptions: false,
-                          onBackTap: _navigateBack,
+              AnimatedBuilder(
+                  animation: _slideAnimation,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: _slideAnimation.value,
+                      child: AnimatedContainer(
+                        height: _innerHeight,
+                        curve: Curves.fastOutSlowIn,
+                        duration: _duration,
+                        padding: const EdgeInsets.only(
+                          bottom: space3x,
                         ),
-                        SizedBox(height: rh(space3x)),
-                        const CartItemsWidget(),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(rf(30)),
+                            topRight: Radius.circular(rf(30)),
+                            bottomLeft: Radius.circular(rf(30)),
+                            bottomRight: Radius.circular(rf(30)),
+                          ),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomAppBar(
+                                isHeroAnimated: false,
+                                showOptions: false,
+                                onBackTap: _navigateBack,
+                              ),
+                              SizedBox(height: rh(space3x)),
+                              const CartItemsWidget(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox(height: rh(space4x)),
               FadeAnimation(
                 duration: const Duration(milliseconds: 1750),

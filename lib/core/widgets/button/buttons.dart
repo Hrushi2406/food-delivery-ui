@@ -122,7 +122,9 @@ class Buttons {
           ? const FittedBox(child: CircularProgressIndicator())
           : Text(
               text.toUpperCase(),
-              style: Theme.of(context).textTheme.button,
+              style: Theme.of(context).textTheme.button!.copyWith(
+                    fontSize: rf(14),
+                  ),
             ),
     );
   }

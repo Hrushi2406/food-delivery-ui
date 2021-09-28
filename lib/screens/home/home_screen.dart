@@ -69,9 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //Initial Animation
 
-    _height = MediaQuery.of(context).padding.top + rh(50);
+    // _height = MediaQuery.of(context).padding.top + rh(50);
+    _height = 0;
     setState(() {});
-    Timer(const Duration(milliseconds: 200), () {
+    Timer(const Duration(milliseconds: 50), () {
       _animateContainerFromTopToBottom();
     });
   }
@@ -112,7 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: SlideAnimation(
-        duration: const Duration(milliseconds: 250),
+        begin: const Offset(0, 400),
+        duration: const Duration(milliseconds: 750),
         child: AnimatedContainer(
           height: _height,
           curve: Curves.fastOutSlowIn,
@@ -120,11 +122,11 @@ class _HomeScreenState extends State<HomeScreen> {
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(rf(40)),
-              topRight: Radius.circular(rf(40)),
-              bottomLeft: Radius.circular(rf(40)),
-              bottomRight: Radius.circular(rf(40)),
-            ),
+                // topLeft: Radius.circular(rf(40)),
+                // topRight: Radius.circular(rf(40)),
+                // bottomLeft: Radius.circular(rf(40)),
+                // bottomRight: Radius.circular(rf(40)),
+                ),
           ),
           child: SingleChildScrollView(
             child: Column(
