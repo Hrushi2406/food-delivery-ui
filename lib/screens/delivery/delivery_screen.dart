@@ -99,34 +99,28 @@ class _DeliveryScreenState extends State<DeliveryScreen>
             opacity: _animationController,
             child: SlideTransition(
               position: _slideFromLeft,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  CIcons.fromMaterial(
-                      size: 64,
-                      icon: Icons.card_giftcard,
-                      semanticLabel: "delivery"),
-                  SizedBox(height: rh(1.5 * space1x)),
-                  Text(
-                    "Delivery",
-                    style: Theme.of(context).textTheme.headline2!.copyWith(
-                          fontSize: rf(24),
-                        ),
-                  ),
-                  Text(
-                    "App",
-                    style: Theme.of(context).textTheme.headline2!.copyWith(
-                          fontWeight: FontWeight.w300,
-                          fontSize: rf(24),
-                        ),
-                  ),
-                ],
+              child: Image.asset(
+                "assets/images/delivery-truck.png",
+                width: rw(120),
               ),
             ),
           ),
-          SizedBox(
-            height: rh(80),
-          ),
+          // CIcons.fromMaterial(
+          // //     size: 64, icon: Icons.card_giftcard, semanticLabel: "delivery"),
+          // Text(
+          //   "Delivery",
+          //   style: Theme.of(context).textTheme.headline2,
+          // ),
+          // Text(
+          //   "App",
+          //   style: Theme.of(context)
+          //       .textTheme
+          //       .headline2!
+          //       .copyWith(fontWeight: FontWeight.w300),
+          // ),
+          // SizedBox(
+          //   height: rh(80),
+          // ),
           SlideTransition(
             position: _slideClippedContainer,
             child: ClippedContainer(
