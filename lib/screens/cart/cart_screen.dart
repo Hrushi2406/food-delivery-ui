@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../core/animations/animations.dart';
-import '../../core/widgets/custom_widgets.dart';
 
+import '../../core/animations/animations.dart';
 import '../../core/utils/utils.dart';
 import '../../core/widgets/button/buttons.dart';
+import '../../core/widgets/custom_widgets.dart';
 import '../delivery/delivery_screen.dart';
 import 'widget/cart_items_widget.dart';
 
@@ -185,7 +185,7 @@ class _CartScreenState extends State<CartScreen>
                   curve: Curves.fastOutSlowIn,
                   duration: _duration,
                   padding: const EdgeInsets.only(
-                    bottom: space3x,
+                    bottom: space1x,
                   ),
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primary,
