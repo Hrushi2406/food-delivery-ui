@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/constant.dart';
+import 'package:food_delivery/core/animations/animations.dart';
+import 'package:food_delivery/core/animations/slide_animation.dart';
 import 'package:food_delivery/core/utils/utils.dart';
 import 'package:food_delivery/core/widgets/custom_widgets.dart';
 import 'package:food_delivery/screens/home/home_screen.dart';
@@ -27,50 +29,73 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CIcons.fromMaterial(
-              size: 64, icon: Icons.card_giftcard, semanticLabel: "delivery"),
-          Text(
-            "Delivery",
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          Text(
-            "App",
-            style: Theme.of(context)
-                .textTheme
-                .headline2!
-                .copyWith(fontWeight: FontWeight.w300),
+          FadeAnimation(
+            duration: const Duration(milliseconds: 1000),
+            child: SlideAnimation(
+              duration: const Duration(milliseconds: 1000),
+              begin: const Offset(-100, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  CIcons.fromMaterial(
+                      size: 64,
+                      icon: Icons.card_giftcard,
+                      semanticLabel: "delivery"),
+                  SizedBox(height: rh(1.5 * space1x)),
+                  Text(
+                    "Delivery",
+                    style: Theme.of(context).textTheme.headline2!.copyWith(
+                          fontSize: rf(24),
+                        ),
+                  ),
+                  Text(
+                    "App",
+                    style: Theme.of(context).textTheme.headline2!.copyWith(
+                          fontWeight: FontWeight.w300,
+                          fontSize: rf(24),
+                        ),
+                  ),
+                ],
+              ),
+            ),
           ),
           SizedBox(
             height: rh(80),
           ),
           ClippedContainer(
-            height: 120,
+            height: rh(120),
             backgroundColor: Colors.white,
-            child: Container(
-              padding: const EdgeInsets.only(left: space5x),
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Your favorite restaurant",
-                    style: Theme.of(context).textTheme.headline4!.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.normal,
-                        ),
-                  ),
-                  SizedBox(
-                    height: rh(10),
-                  ),
-                  Text(
-                    "food deliered home",
-                    style: Theme.of(context).textTheme.headline4!.copyWith(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.normal,
-                        ),
-                  ),
-                ],
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 1.5 * space5x),
+              child: SlideAnimation(
+                duration: const Duration(milliseconds: 950),
+                intervalStart: 0.45,
+                curve: Curves.easeOutBack,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Your favorite restaurant",
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: rf(18),
+                          ),
+                    ),
+                    SizedBox(
+                      height: rh(space1x),
+                    ),
+                    Text(
+                      "food deliverd home",
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: rf(18),
+                            // fontWeight: FontWeight.normal,
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -119,14 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
           height: _height,
           curve: Curves.fastOutSlowIn,
           duration: _duration,
+          padding: EdgeInsets.only(bottom: rh(20)),
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
-            borderRadius: BorderRadius.only(
-                // topLeft: Radius.circular(rf(40)),
-                // topRight: Radius.circular(rf(40)),
-                // bottomLeft: Radius.circular(rf(40)),
-                // bottomRight: Radius.circular(rf(40)),
-                ),
           ),
           child: SingleChildScrollView(
             child: Column(

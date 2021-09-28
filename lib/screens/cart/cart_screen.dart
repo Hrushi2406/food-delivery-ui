@@ -27,6 +27,8 @@ class _CartScreenState extends State<CartScreen>
 
   late double _innerHeight;
 
+  bool _showButtons = true;
+
   late final AnimationController _animationController;
 
   late final Animation<Offset> _slideAnimation;
@@ -68,16 +70,18 @@ class _CartScreenState extends State<CartScreen>
   }
 
   _navigate() async {
-    await _animateContainerFromBottomToTop();
+    await _animateInnerContainerFromBottomToTop();
 
-    //PUSH TO CART SCREEN
+    await Future.delayed(const Duration(milliseconds: 250));
+
+    //PUSH TO DELIVERY SCREEN
     //Wait till the CART is poped
     await Navigation.push(
       context,
       customPageTransition: PageTransition(
         duration: _duration,
         type: PageTransitionType.fadeIn,
-        child: const CartScreen(),
+        child: const DeliveryScreen(),
       ),
     );
 
@@ -86,8 +90,6 @@ class _CartScreenState extends State<CartScreen>
 
   _navigateBack() async {
     await _animateInnerContainerFromBottomToTop();
-
-    _slideOutContainer();
 
     await _animateContainerFromBottomToTop();
 
@@ -115,10 +117,13 @@ class _CartScreenState extends State<CartScreen>
   _animateInnerContainerFromBottomToTop() async {
     //Animate back to default value
     _innerHeight = MediaQuery.of(context).padding.top + rh(50);
+    _showButtons = false;
     setState(() {});
 
     //Wait till animation is completed
     await Future.delayed(_duration);
+
+    _slideOutContainer();
   }
 
   _animateInnerContainerFromTopToBottom() async {
@@ -169,82 +174,87 @@ class _CartScreenState extends State<CartScreen>
           child: Column(
             children: [
               AnimatedBuilder(
-                  animation: _slideAnimation,
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: _slideAnimation.value,
-                      child: AnimatedContainer(
-                        height: _innerHeight,
-                        curve: Curves.fastOutSlowIn,
-                        duration: _duration,
-                        padding: const EdgeInsets.only(
-                          bottom: space3x,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(rf(30)),
-                            topRight: Radius.circular(rf(30)),
-                            bottomLeft: Radius.circular(rf(30)),
-                            bottomRight: Radius.circular(rf(30)),
-                          ),
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomAppBar(
-                                isHeroAnimated: false,
-                                showOptions: false,
-                                onBackTap: _navigateBack,
-                              ),
-                              SizedBox(height: rh(space3x)),
-                              const CartItemsWidget(),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-              SizedBox(height: rh(space4x)),
-              FadeAnimation(
-                duration: const Duration(milliseconds: 1750),
-                intervalStart: 0.50,
-                child: ScaleAnimation(
-                  duration: const Duration(milliseconds: 1750),
-                  intervalStart: 0.50,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: space2x),
-                    child: Row(
+                animation: _slideAnimation,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: _slideAnimation.value,
+                    child: child,
+                  );
+                },
+                child: AnimatedContainer(
+                  height: _innerHeight,
+                  curve: Curves.fastOutSlowIn,
+                  duration: _duration,
+                  padding: const EdgeInsets.only(
+                    bottom: space3x,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(rf(30)),
+                      topRight: Radius.circular(rf(30)),
+                      bottomLeft: Radius.circular(rf(30)),
+                      bottomRight: Radius.circular(rf(30)),
+                    ),
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(space2x),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(rf(10)),
-                            color: Colors.white,
-                          ),
-                          child: Text(
-                            "\$22.74",
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
+                        CustomAppBar(
+                          isHeroAnimated: false,
+                          showOptions: false,
+                          onBackTap: _navigateBack,
                         ),
-                        SizedBox(
-                          width: rw(space2x),
-                        ),
-                        Expanded(
-                          child: Buttons.flexible(
-                            context: context,
-                            text: "CHECKOUT",
-                            borderRadius: 10,
-                            vPadding: space3x,
-                            onPressed: () {},
-                          ),
-                        )
+                        SizedBox(height: rh(space3x)),
+                        const CartItemsWidget(),
                       ],
                     ),
                   ),
                 ),
               ),
+              SizedBox(height: rh(space4x)),
+              _showButtons
+                  ? FadeAnimation(
+                      duration: const Duration(milliseconds: 1750),
+                      intervalStart: 0.50,
+                      child: ScaleAnimation(
+                        duration: const Duration(milliseconds: 1750),
+                        intervalStart: 0.50,
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.symmetric(horizontal: space2x),
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(space2x),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(rf(10)),
+                                  color: Colors.white,
+                                ),
+                                child: Text(
+                                  "\$22.74",
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                              ),
+                              SizedBox(
+                                width: rw(space2x),
+                              ),
+                              Expanded(
+                                child: Buttons.flexible(
+                                  context: context,
+                                  text: "CHECKOUT",
+                                  borderRadius: 10,
+                                  vPadding: space3x,
+                                  onPressed: _navigate,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container(),
               SizedBox(height: rh(space4x)),
             ],
           ),
