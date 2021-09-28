@@ -61,6 +61,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: "CircularStd"
+      fonts:
+        - asset: assets/fonts/CircularStd-Book.ttf
+        - asset: assets/fonts/CircularStd-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/CircularStd-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/CircularStd-Black.ttf
+          weight: 800
+
   # fonts:
   #   - family: Schyler
   #     fonts:

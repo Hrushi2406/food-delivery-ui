@@ -32,7 +32,7 @@ class _DeliveryScreenState extends State<DeliveryScreen>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 950),
+      duration: const Duration(milliseconds: 1000),
     );
 
     _slideFromLeft = Tween<Offset>(

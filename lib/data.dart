@@ -39,32 +39,32 @@ List<Widget> vendorList = const [
 List<Widget> productList = const [
   ProductItem(
     title: "Honey Milk Donut",
-    detail: "blueberry + sugar + flawour + some ingrident ...",
+    detail: "Honey + sugar + flawour + some ingrident ...",
     imagePath: "assets/images/donut/donut_7.png",
   ),
   ProductItem(
-    title: "Honey Milk Donut",
-    detail: "blueberry + sugar + flawour + some ingrident ...",
+    title: "Raspberry Donut",
+    detail: "Raspberry + sugar + flawour ",
     imagePath: "assets/images/donut/donut_2.png",
   ),
   ProductItem(
-    title: "Honey Milk Donut",
-    detail: "blueberry + sugar + flawour + some ingrident ...",
+    title: "Chocolate Donut",
+    detail: "Chocolate + sugar + flawour + some ingrident ...",
     imagePath: "assets/images/donut/donut_3.png",
   ),
   ProductItem(
-    title: "Honey Milk Donut",
-    detail: "blueberry + sugar + flawour + some ingrident ...",
+    title: "Blueberry Donut",
+    detail: "Blueberry + sugar + flawour + some ingrident ...",
     imagePath: "assets/images/donut/donut_4.png",
   ),
   ProductItem(
-    title: "Honey Milk Donut",
-    detail: "blueberry + sugar + flawour + some ingrident ...",
+    title: "Sugary Heaven",
+    detail: " Sugar + flawour + some ingrident ...",
     imagePath: "assets/images/donut/donut_5.png",
   ),
   ProductItem(
-    title: "Honey Milk Donut",
-    detail: "blueberry + sugar + flawour + some ingrident ...",
+    title: "Juicy Donut",
+    detail: "Juicy + sugar + flawour + some ingrident ...",
     imagePath: "assets/images/donut/donut_6.png",
   ),
 ];
