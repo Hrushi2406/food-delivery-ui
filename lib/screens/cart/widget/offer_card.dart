@@ -39,6 +39,7 @@ class OfferCard extends StatelessWidget {
               Text(
                 heading,
                 style: Theme.of(context).textTheme.headline5!.copyWith(
+                      fontSize: rf(16),
                       color: Colors.white,
                       fontWeight: FontWeight.w300,
                     ),
@@ -50,7 +51,7 @@ class OfferCard extends StatelessWidget {
                 subHeading,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                       color: Colors.grey.shade300,
-                      fontSize: rf(14),
+                      fontSize: rf(12),
                       fontWeight: FontWeight.w400,
                     ),
               ),

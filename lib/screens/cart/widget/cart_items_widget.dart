@@ -125,8 +125,8 @@ class CartItemsWidget extends StatelessWidget {
                       icon: Image.asset("assets/images/fast-delivery.png",
                           color: Colors.white)),
                   OfferCard(
-                    heading: "Delivery",
-                    subHeading: "FREE",
+                    heading: "Promo Code",
+                    subHeading: "No Code",
                     showAddBTN: true,
                     icon: Image.asset(
                       "assets/images/discount.png",

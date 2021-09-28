@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/screens/cart/cart_screen.dart';
 import 'package:food_delivery/screens/delivery/delivery_screen.dart';
+import 'package:food_delivery/screens/splash/splash_screen.dart';
 
 import 'core/theme/app_theme.dart';
 import 'core/utils/utils.dart';
@@ -17,11 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizeConfiguration(
       builder: (_) => MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Delicious',
         theme: AppTheme.light(),
-        home: const HomeScreen(),
-        // home: const CartScreen(),
-        // home: const DeliveryScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
