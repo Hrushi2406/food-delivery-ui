@@ -23,7 +23,9 @@ class _CategoryListViewState extends State<CategoryListView> {
     "assets/images/pizza-slice.png",
     "assets/images/donut.png",
   ];
+
   int selectIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -44,8 +46,8 @@ class _CategoryListViewState extends State<CategoryListView> {
                   selectIndex == index ? Colors.white : const Color(0xfff2e3db),
               icon: Image.asset(
                 categoryIconList[index],
-                width: rw(40),
-                height: rh(40),
+                width: rw(35),
+                height: rh(35),
               ),
             ),
           );

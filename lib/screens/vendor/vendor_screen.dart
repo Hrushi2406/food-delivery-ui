@@ -6,6 +6,7 @@ import 'package:food_delivery/core/animations/fade_animation.dart';
 import 'package:food_delivery/core/widgets/custom_widgets.dart';
 
 import '../../core/utils/utils.dart';
+import '../../data.dart';
 import '../../widgets/clipped_container.dart';
 import '../product/product_screen.dart';
 import 'widget/product_item.dart';
@@ -19,39 +20,6 @@ class VendorScreen extends StatefulWidget {
 }
 
 class _VendorScreenState extends State<VendorScreen> {
-  List<Widget> productList = const [
-    ProductItem(
-      title: "Honey Milk Donut",
-      detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/donut/donut_7.png",
-    ),
-    ProductItem(
-      title: "Honey Milk Donut",
-      detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/donut/donut_2.png",
-    ),
-    ProductItem(
-      title: "Honey Milk Donut",
-      detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/donut/donut_3.png",
-    ),
-    ProductItem(
-      title: "Honey Milk Donut",
-      detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/donut/donut_4.png",
-    ),
-    ProductItem(
-      title: "Honey Milk Donut",
-      detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/donut/donut_5.png",
-    ),
-    ProductItem(
-      title: "Honey Milk Donut",
-      detail: "blueberry + sugar + flawour + some ingrident ...",
-      imagePath: "assets/images/donut/donut_6.png",
-    ),
-  ];
-
   final _duration = const Duration(milliseconds: 750);
 
   final _pseudoDuration = const Duration(milliseconds: 150);

@@ -52,7 +52,10 @@ class Navigation {
     Route? customPageTransition,
   }) {
     if (customPageTransition != null) {
-      Navigator.of(context).push(customPageTransition);
+      Navigator.of(context).pushAndRemoveUntil(
+        customPageTransition,
+        (Route<dynamic> route) => false,
+      );
     }
     if (screen != null) {
       Navigator.of(context).pushAndRemoveUntil(

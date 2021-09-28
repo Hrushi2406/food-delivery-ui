@@ -15,13 +15,6 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  // _navigate() {
-  //   Navigation.push(
-  //     context,
-  //     screen: const CartScreen(),
-  //   );
-  // }
-
   final _duration = const Duration(milliseconds: 750);
 
   final _pseudoDuration = const Duration(milliseconds: 150);
@@ -121,7 +114,6 @@ class _ProductScreenState extends State<ProductScreen> {
                                 child: Image.asset(
                                   "assets/images/donut/donut_4.png",
                                   width: rw(380),
-                                  // height: rh(),
                                 ),
                               ),
                             ),

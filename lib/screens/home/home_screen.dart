@@ -8,9 +8,9 @@ import 'package:food_delivery/screens/home/widget/category_list_view.dart';
 
 import '../../core/utils/utils.dart';
 import '../../core/widgets/custom_widgets.dart';
+import '../../data.dart';
 import '../../widgets/clipped_container.dart';
 import '../vendor/vendor_screen.dart';
-import 'widget/category_item.dart';
 import 'widget/vender_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -69,44 +69,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //Initial Animation
 
-    // _height = MediaQuery.of(context).padding.top + rh(50);
     _height = 0;
     setState(() {});
+
+    //Animate after a short delay
     Timer(const Duration(milliseconds: 50), () {
       _animateContainerFromTopToBottom();
     });
   }
-
-  List<Widget> vendorList = const [
-    VendorCard(
-        imagePath: "assets/images/logo/gladis_logo.jpg",
-        name: "Gladis Baker",
-        rating: 4.2),
-    VendorCard(
-        imagePath: "assets/images/logo/tasties_logo.jpg",
-        name: "Tasties by tina",
-        rating: 4.5),
-    VendorCard(
-        imagePath: "assets/images/logo/donut2_logo.jpg",
-        name: "New York Donut.",
-        rating: 4.2),
-    VendorCard(
-        imagePath: "assets/images/logo/sweet-shop-logo.jpg",
-        name: "Sweets Shop.",
-        rating: 4.0),
-    VendorCard(
-        imagePath: "assets/images/logo/leliuious_logo.jpg",
-        name: "Leliuious.",
-        rating: 4.3),
-    VendorCard(
-        imagePath: "assets/images/logo/monginis-logo.png",
-        name: "Monginis",
-        rating: 3.8),
-    VendorCard(
-        imagePath: "assets/images/logo/lila_logo.png",
-        name: "Lial Manila Sweets",
-        rating: 4.2),
-  ];
 
   @override
   Widget build(BuildContext context) {

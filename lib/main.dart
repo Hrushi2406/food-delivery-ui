@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       builder: (_) => MaterialApp(
         title: 'Flutter Demo',
         theme: AppTheme.light(),
-        // home: const HomeScreen(),
+        home: const HomeScreen(),
         // home: const CartScreen(),
-        home: const DeliveryScreen(),
+        // home: const DeliveryScreen(),
       ),
     );
   }

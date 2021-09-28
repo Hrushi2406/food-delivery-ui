@@ -95,10 +95,10 @@ class CartItemsWidget extends StatelessWidget {
           ),
           // food item
           FadeAnimation(
-            intervalStart: 0.50,
+            intervalStart: 0.60,
             duration: const Duration(milliseconds: 1750),
             child: SlideAnimation(
-              intervalStart: 0.50,
+              intervalStart: 0.6,
               duration: const Duration(milliseconds: 1750),
               begin: const Offset(0, 200),
               child: ListView(
