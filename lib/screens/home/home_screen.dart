@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
           duration: _duration,
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 // topLeft: Radius.circular(rf(40)),
                 // topRight: Radius.circular(rf(40)),
                 // bottomLeft: Radius.circular(rf(40)),

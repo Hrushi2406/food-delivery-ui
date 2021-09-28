@@ -120,23 +120,18 @@ class CartItemsWidget extends StatelessWidget {
                     price: 12.95,
                   ),
                   OfferCard(
-                    heading: "Delivery",
-                    subHeading: "FREE",
-                    icon: CIcons.fromMaterial(
-                        icon: Icons.car_rental,
-                        size: 36,
-                        color: Colors.white,
-                        semanticLabel: "free deliver"),
-                  ),
+                      heading: "Delivery",
+                      subHeading: "FREE",
+                      icon: Image.asset("assets/images/fast-delivery.png",
+                          color: Colors.white)),
                   OfferCard(
                     heading: "Delivery",
                     subHeading: "FREE",
                     showAddBTN: true,
-                    icon: CIcons.fromMaterial(
-                        icon: Icons.disc_full_rounded,
-                        size: 36,
-                        color: Colors.white,
-                        semanticLabel: "free deliver"),
+                    icon: Image.asset(
+                      "assets/images/discount.png",
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),

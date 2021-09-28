@@ -27,8 +27,12 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CIcons.fromMaterial(
-              size: 64, icon: Icons.card_giftcard, semanticLabel: "delivery"),
+          Image.asset(
+            "assets/images/delivery-truck.png",
+            width: rw(120),
+          ),
+          // CIcons.fromMaterial(
+          //     size: 64, icon: Icons.card_giftcard, semanticLabel: "delivery"),
           Text(
             "Delivery",
             style: Theme.of(context).textTheme.headline2,
