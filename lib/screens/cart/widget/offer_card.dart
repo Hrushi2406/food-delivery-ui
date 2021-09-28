@@ -1,6 +1,6 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:food_delivery/core/utils/ui_helper.dart';
-import 'package:food_delivery/core/widgets/custom_widgets.dart';
+import '../../../core/utils/ui_helper.dart';
+import '../../../core/widgets/custom_widgets.dart';
 
 class OfferCard extends StatelessWidget {
   const OfferCard({

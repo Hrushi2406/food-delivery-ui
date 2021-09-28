@@ -23,7 +23,7 @@ class ProductItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(rf(10)),
-            child: Container(
+            child: SizedBox(
               width: rh(space4x),
               child: AspectRatio(
                 aspectRatio: 1,

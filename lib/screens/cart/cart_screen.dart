@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/widgets/custom_widgets.dart';
+import '../../core/animations/animations.dart';
+import '../../core/widgets/custom_widgets.dart';
 
-import '../../constant.dart';
 import '../../core/utils/utils.dart';
 import '../../core/widgets/button/buttons.dart';
 import '../delivery/delivery_screen.dart';

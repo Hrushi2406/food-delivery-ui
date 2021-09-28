@@ -1,7 +1,6 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/utils/size_config.dart';
 
+import '../../../core/animations/animations.dart';
 import '../../../core/utils/ui_helper.dart';
 import '../../../core/widgets/icon/custom_icons.dart';
 import 'cart_item.dart';

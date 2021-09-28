@@ -1,15 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/animations/fade_animation.dart';
-import 'package:food_delivery/core/widgets/custom_widgets.dart';
 
+import '../../core/animations/animations.dart';
+import '../../core/animations/fade_animation.dart';
 import '../../core/utils/utils.dart';
+import '../../core/widgets/custom_widgets.dart';
 import '../../data.dart';
 import '../../widgets/clipped_container.dart';
 import '../product/product_screen.dart';
-import 'widget/product_item.dart';
 import 'widget/vendor_info_card.dart';
 
 class VendorScreen extends StatefulWidget {

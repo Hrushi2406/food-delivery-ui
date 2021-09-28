@@ -1,10 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/utils/utils.dart';
 
 import '../../utils/ui_helper.dart';
+import '../../utils/utils.dart';
 import '../custom_widgets.dart';
 
 class CustomAppBar extends StatelessWidget {

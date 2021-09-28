@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/widgets/custom_widgets.dart';
+import '../../core/animations/animations.dart';
+import '../../core/widgets/custom_widgets.dart';
 
 import '../../core/utils/utils.dart';
 import '../../core/widgets/app_bar/custom_app_bar.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/utils/utils.dart';
-import 'package:food_delivery/screens/home/home_screen.dart';
+import '../../core/animations/animations.dart';
+import '../../core/utils/utils.dart';
+import '../home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _next() {
-    Timer(const Duration(milliseconds: 1750), () {
+    Timer(const Duration(milliseconds: 450), () {
       Navigation.push(
         context,
         customPageTransition: PageTransition(
@@ -35,15 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/images/logo.png',
-          ),
-        ],
-      ),
+      body: Container(),
     );
   }
 }

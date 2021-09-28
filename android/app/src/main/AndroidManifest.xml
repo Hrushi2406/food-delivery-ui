@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.delivery.hrushi.food_delivery">
    <application
-        android:label="Delicious"
+        android:label="Foodie"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

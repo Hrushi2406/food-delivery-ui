@@ -1,5 +1,5 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:food_delivery/core/utils/utils.dart';
+import '../../../core/utils/utils.dart';
 
 import 'category_item.dart';
 
@@ -24,6 +24,17 @@ class _CategoryListViewState extends State<CategoryListView> {
     "assets/images/donut.png",
   ];
 
+  List<String> name = [
+    'All',
+    'Burgers',
+    'Pizza',
+    'Dessert',
+    'All',
+    'Burgers',
+    'Pizza',
+    'Dessert',
+  ];
+
   int selectIndex = 0;
 
   @override
@@ -42,6 +53,7 @@ class _CategoryListViewState extends State<CategoryListView> {
               setState(() {});
             },
             child: CategoryItem(
+              name: name[index],
               backgroundColor:
                   selectIndex == index ? Colors.white : const Color(0xfff2e3db),
               icon: Image.asset(

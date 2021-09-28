@@ -3,11 +3,18 @@
 import '../../../core/utils/ui_helper.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem(
-      {Key? key, required this.icon, required this.backgroundColor})
-      : super(key: key);
+  const CategoryItem({
+    Key? key,
+    required this.name,
+    required this.icon,
+    required this.backgroundColor,
+  }) : super(key: key);
+
   final Widget icon;
+
+  final String name;
   final Color backgroundColor;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +31,8 @@ class CategoryItem extends StatelessWidget {
             height: rh(space1x),
           ),
           Text(
-            "Dessert ",
+            name,
+            // "Dessert ",
             style: Theme.of(context).textTheme.headline6!.copyWith(
                   fontSize: rf(12),
                 ),

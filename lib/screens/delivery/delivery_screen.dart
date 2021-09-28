@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/constant.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/utils/utils.dart';
-import 'package:food_delivery/core/widgets/custom_widgets.dart';
-import 'package:food_delivery/screens/home/home_screen.dart';
-import 'package:food_delivery/widgets/clipped_container.dart';
+
+import '../../constant.dart';
+import '../../core/animations/animations.dart';
+import '../../core/utils/utils.dart';
+import '../../widgets/clipped_container.dart';
+import '../home/home_screen.dart';
 
 class DeliveryScreen extends StatefulWidget {
   const DeliveryScreen({Key? key}) : super(key: key);

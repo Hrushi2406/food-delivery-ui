@@ -2,16 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/animations/animations.dart';
-import 'package:food_delivery/core/animations/fade_animation.dart';
-import 'package:food_delivery/screens/home/widget/category_list_view.dart';
 
+import '../../core/animations/animations.dart';
+import '../../core/animations/fade_animation.dart';
 import '../../core/utils/utils.dart';
 import '../../core/widgets/custom_widgets.dart';
 import '../../data.dart';
 import '../../widgets/clipped_container.dart';
 import '../vendor/vendor_screen.dart';
-import 'widget/vender_card.dart';
+import 'widget/category_list_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

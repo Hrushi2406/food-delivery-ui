@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/core/animations/slide_animation.dart';
-import 'package:food_delivery/core/utils/utils.dart';
+import '../core/animations/slide_animation.dart';
+import '../core/utils/utils.dart';
 
 class ClippedContainer extends StatelessWidget {
   const ClippedContainer({
